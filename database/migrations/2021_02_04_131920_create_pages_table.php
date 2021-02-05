@@ -16,7 +16,7 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->nullable();
+            $table->string('slug')->unique();
             $table->string('slug_backup')->nullable();
             $table->string('uri')->unique()->nullable();
             $table->string('uri_backup')->nullable();
@@ -24,9 +24,6 @@ class CreatePagesTable extends Migration
             $table->boolean('hide_submenu')->default(false);
             $table->nestedSet();
             $table->bigInteger('user_id')->nullable();
-            $table->bigInteger('pageable_id');
-            $table->string('pageable_type');
-            $table->unique(['parent_id', 'slug']);
             $table->timestamps();
             $table->softDeletes();
         });
