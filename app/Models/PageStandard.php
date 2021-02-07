@@ -4,22 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class PageStandard extends Model
 {
     use HasFactory;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'pages_standard';
+    protected $guarded = [];
 
-    public function page(): MorphToMany
+    public function page() : morphOne
     {
-        return $this->morphedByMany(Page::class, 'pageable');
+        return $this->morphOne(Page::class, 'pageable');
     }
-
 }

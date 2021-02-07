@@ -5,20 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Page extends Model
 {
-    use NodeTrait;
     use HasFactory;
+    use NodeTrait;
 
-    public function pages_standard(): MorphToMany
+    protected $guarded = [];
+
+    public function page_type(): BelongsTo
     {
-        return $this->morphedByMany(PageStandard::class, 'pageable');
+        return $this->belongsTo(PageType::class);
     }
 
-    public function pages_special(): MorphToMany
+    public function pageable() : morphTo
     {
-        return $this->morphedByMany(PageSpecial::class, 'pageable');
+        return $this->morphTo();
     }
 }

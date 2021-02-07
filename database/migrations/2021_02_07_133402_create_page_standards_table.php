@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesStandardTable extends Migration
+class CreatePageStandardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePagesStandardTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages_standard', function (Blueprint $table) {
+        Schema::create('page_standards', function (Blueprint $table) {
             $table->id();
-            $table->string('standard_field');
+            $table->string('standard_field')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreatePagesStandardTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages_standard');
+        Schema::dropIfExists('page_standards');
     }
 }

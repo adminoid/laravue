@@ -11,19 +11,23 @@ class CreatePagesTable extends Migration
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('title')->nullable();
+            $table->string('slug')->unique()->nullable();
             $table->string('slug_backup')->nullable();
             $table->string('uri')->unique()->nullable();
             $table->string('uri_backup')->nullable();
             $table->string('lock_move')->default(false);
             $table->boolean('hide_submenu')->default(false);
             $table->nestedSet();
-            $table->bigInteger('user_id')->nullable();
+            $table->integer('page_type_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('pageable_id')->unsigned()->nullable();
+            $table->string('pageable_type')->nullable();
+            $table->index(['page_type_id', 'user_id']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,7 +38,7 @@ class CreatePagesTable extends Migration
      *
      * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('pages');
     }

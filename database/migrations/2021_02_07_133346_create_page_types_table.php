@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageableTable extends Migration
+class CreatePageTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePageableTable extends Migration
      */
     public function up()
     {
-        Schema::create('pageable', function (Blueprint $table) {
-            $table->bigInteger('page_id')->unique();
-            $table->bigInteger('pageable_id');
-            $table->string('pageable_type');
-            $table->string('vue_component');
-            $table->string('template');
+        Schema::create('page_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('model')->nullable();
+            $table->string('vue_component')->nullable();
+            $table->string('template')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePageableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pageable');
+        Schema::dropIfExists('page_types');
     }
 }

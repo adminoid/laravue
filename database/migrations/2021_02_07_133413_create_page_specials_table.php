@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesSpecialTable extends Migration
+class CreatePageSpecialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePagesSpecialTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages_special', function (Blueprint $table) {
+        Schema::create('page_specials', function (Blueprint $table) {
             $table->id();
-            $table->string('special_field');
+            $table->string('special_field')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreatePagesSpecialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages_special');
+        Schema::dropIfExists('page_specials');
     }
 }
