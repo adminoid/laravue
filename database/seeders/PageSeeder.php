@@ -39,22 +39,22 @@ class PageSeeder extends Seeder
         }
 
         $mainPage = Page::create(['title' => 'Main page']);
-        $mainPage->wrap($specialType, $page_0);
+        $mainPage->wrap($specialType, $page_0, $node = false);
 
         $childPage1 = Page::create(['title' => 'child page one']);
-        $childPage1->wrap($standardType, $page_1);
+        $childPage1->wrap($standardType, $page_1, $mainPage);
         $childPage1->appendToNode($mainPage)->save();
 
         $childPage2 = Page::create(['title' => 'child page two']);
-        $childPage2->wrap($standardType, $page_2);
+        $childPage2->wrap($standardType, $page_2, $mainPage);
         $childPage2->appendToNode($mainPage)->save();
 
         $grandChildPage3 = Page::create(['title' => 'grand child page one']);
-        $grandChildPage3->wrap($standardType, $page_3);
+        $grandChildPage3->wrap($standardType, $page_3, $childPage1);
         $grandChildPage3->appendToNode($childPage1)->save();
 
         $grandChildPage4 = Page::create(['title' => 'grand child page two']);
-        $grandChildPage4->wrap($specialType, $page_4);
+        $grandChildPage4->wrap($specialType, $page_4, $childPage2);
         $grandChildPage4->appendToNode($childPage2)->save();
 
     }

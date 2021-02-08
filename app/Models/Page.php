@@ -25,10 +25,13 @@ class Page extends Model
         return $this->morphTo();
     }
 
-    public function wrap($type, $pageable): void
+    public function wrap($type, $pageable, $node): void
     {
         $this->page_type()->associate($type);
         $this->pageable()->associate($pageable)->save();
+        if ($node) {
+            $this->appendToNode($node)->save();
+        }
     }
 
 }

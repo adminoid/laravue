@@ -18,8 +18,7 @@ class CheckPageRelations extends TestCase
     public function test_page_polymorphic_relations()
     {
         $page = new Page(['title' => 'Page one']);
-        $pageable = new PageStandard(['standard_field' => 'standard field value']);
-        $pageable->save();
+        $pageable = PageStandard::create(['standard_field' => 'standard field value']);
         $page->pageable()->associate($pageable)->save();
         self::assertEquals(1, $page->pageable()->count());
         self::assertEquals(1, $pageable->page()->count());
@@ -27,8 +26,7 @@ class CheckPageRelations extends TestCase
 
     public function test_page_page_types_relations()
     {
-        $pageType = PageType::factory()->make(['model' => 'test_model']);
-        $pageType->save();
+        $pageType = PageType::create(['model' => 'test_model']);
         $pages = Page::factory()->count(3)->make(['title' => 'test_page']);
         $pageType->pages()->saveMany($pages);
         self::assertEquals(3, $pageType->pages()->count());
