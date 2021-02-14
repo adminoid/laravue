@@ -21,7 +21,7 @@
 </head>
 <body>
 <div>
-    <nav class="navbar navbar-expand-lg bg-light-blue">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/img/admin-area/logo.svg" alt="Logo">
@@ -60,6 +60,7 @@
             </div>
         </div>
     </nav>
+
     <main class="py-4">
         @yield('content')
     </main>

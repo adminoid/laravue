@@ -12,8 +12,6 @@
 //@import "~bootstrap/scss/variables";
 //@import "~bootstrap/scss/mixins";
 //
-//// Include custom variable default overrides here
-//
 //// Optional
 //@import "~bootstrap/scss/root";
 //@import "~bootstrap/scss/reboot";
@@ -25,7 +23,9 @@
 //@import "~bootstrap/scss/dropdown";
 //@import "~bootstrap/scss/navbar";
 //@import "~bootstrap/scss/nav";
-//
-//.bg-light-blue {
-//    background-color: #d1fffd;
-//}
+//@import "~bootstrap/scss/card";
+//@import "~bootstrap/scss/transitions";
+
+.bg-light-blue {
+    background-color: #d1fffd;
+}
