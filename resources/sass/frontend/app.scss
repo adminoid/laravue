@@ -5,4 +5,27 @@
 @import 'variables';
 
 // Bootstrap
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+
+// Required
+//@import "~bootstrap/scss/functions";
+//@import "~bootstrap/scss/variables";
+//@import "~bootstrap/scss/mixins";
+//
+//// Include custom variable default overrides here
+//
+//// Optional
+//@import "~bootstrap/scss/root";
+//@import "~bootstrap/scss/reboot";
+//@import "~bootstrap/scss/type";
+//@import "~bootstrap/scss/images";
+//@import "~bootstrap/scss/containers";
+//@import "~bootstrap/scss/grid";
+//
+//@import "~bootstrap/scss/dropdown";
+//@import "~bootstrap/scss/navbar";
+//@import "~bootstrap/scss/nav";
+//
+//.bg-light-blue {
+//    background-color: #d1fffd;
+//}

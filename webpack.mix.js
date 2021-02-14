@@ -14,5 +14,6 @@ const mix = require('laravel-mix');
 mix.js('resources/js/admin-area/app.js', 'public/js/admin-area')
     .js('resources/js/frontend/app.js', 'public/js/frontend')
     .vue()
+    .sourceMaps()
     .sass('resources/sass/admin-area/app.scss', 'public/css/admin-area')
     .sass('resources/sass/frontend/app.scss', 'public/css/frontend');
