@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@vue/compiler-sfc": "^3.0.5",
+        "@vue/test-utils": "^2.0.0-rc.1",
         "axios": "^0.21.1",
         "bootstrap": "^5.0.0-beta2",
         "jquery": "^3.2",
@@ -18,9 +19,12 @@
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "postcss": "^8.1.14",
+        "pug": "^3.0.0",
+        "pug-plain-loader": "^1.1.0",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+        "ts-loader": "^8.0.17",
         "vue": "^3.0.5",
         "vue-loader": "^16.1.2",
         "vue-template-compiler": "^2.6.10"
