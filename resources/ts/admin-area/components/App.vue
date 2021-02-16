@@ -3,14 +3,22 @@
     .row.justify-content-center
         .col-md-12
             .card
-                .card-header Adminka
-                .card-body ASDFASDF
+                .card-header Admin
+                .card-body {{ for_test }}
 </template>
 
 <script lang="ts">
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+export default {
+    name: "App",
+
+    data() {
+        return {
+            for_test: 'Vue and TDD'
         }
+    },
+
+    mounted() {
+        console.log('Component mounted.')
     }
+}
 </script>

@@ -7,10 +7,10 @@
         "strict": true,
         "jsx": "preserve",
         "moduleResolution": "node",
+        "esModuleInterop": true
     },
-    "files": ["resources/ts/admin-area/app.ts"],
     "include": [
-        "resources/js/**/*"
+        "resources/ts/**/*.ts"
     ],
     "exclude": ["node_modules"]
 }
