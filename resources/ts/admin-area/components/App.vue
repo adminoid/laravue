@@ -1,24 +1,17 @@
 <template lang="pug">
-.container
-    .row.justify-content-center
-        .col-md-12
-            .card
-                .card-header Admin
-                .card-body {{ for_test }}
+
+app-navbar
+
 </template>
 
 <script lang="ts">
+import AppNavbar from './AppNavbar'
+
 export default {
     name: "App",
 
-    data() {
-        return {
-            for_test: 'Vue and TDD'
-        }
+    components: {
+        AppNavbar
     },
-
-    mounted() {
-        console.log('Component mounted.')
-    }
 }
 </script>

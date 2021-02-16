@@ -10740,3 +10740,7 @@ textarea.form-control-lg {
 .bg-light-blue {
   background-color: #d1fffd;
 }
+
+.btn {
+  border-width: 3px;
+}

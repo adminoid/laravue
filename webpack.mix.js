@@ -15,8 +15,8 @@ mix.ts('resources/ts/admin-area/app.ts', 'public/js/admin-area')
     .js('resources/js/frontend/app.js', 'public/js/frontend')
     .vue()
     .sourceMaps()
-    .sass('resources/sass/admin-area/app.scss', 'public/css/admin-area')
-    .sass('resources/sass/frontend/app.scss', 'public/css/frontend');
+    .sass('resources/sass/admin-area/app.sass', 'public/css/admin-area')
+    .sass('resources/sass/frontend/app.sass', 'public/css/frontend');
 
 mix.webpackConfig({
     module: {
