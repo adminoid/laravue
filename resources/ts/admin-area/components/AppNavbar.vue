@@ -3,12 +3,17 @@ nav.navbar.navbar-dark.bg-light-blue
     .container-fluid
         ul.navbar-nav
             li.nav-item
-                a.btn.btn-outline-success
-                    img(src='/img/admin-area/icons/folding.svg')
+                app-navbar-tree-toggle-btn
 </template>
 
 <script lang="ts">
+import AppNavbarTreeToggleBtn from './AppNavbarTreeToggleBtn.vue'
+
 export default {
     name: "AppNavbar",
+
+    components: {
+        AppNavbarTreeToggleBtn,
+    }
 }
 </script>
