@@ -2,6 +2,8 @@
 
 app-navbar
 
+.container-fluid
+
 </template>
 
 <script lang="ts">

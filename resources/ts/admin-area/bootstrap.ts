@@ -1,4 +1,4 @@
-(window as any)._ = require('lodash')
+// (window as any)._ = require('lodash')
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -15,9 +15,9 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    (window as any).Popper = require('popper.js').default;
-    (window as any).$ = (window as any).jQuery = require('jquery');
-
-    require('bootstrap');
-} catch (e) {}
+// try {
+//     (window as any).Popper = require('popper.js').default;
+//     (window as any).$ = (window as any).jQuery = require('jquery');
+//
+//     require('bootstrap');
+// } catch (e) {}
