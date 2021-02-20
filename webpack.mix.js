@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const config = require('./webpack.config');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,33 +19,4 @@ mix.ts('resources/ts/admin-area/app.ts', 'public/js/admin-area')
     .sass('resources/sass/admin-area/app.sass', 'public/css/admin-area')
     .sass('resources/sass/frontend/app.sass', 'public/css/frontend');
 
-mix.webpackConfig({
-    module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                },
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-            },
-            {
-                test: /\.pug$/,
-                oneOf: [
-                    {
-                        resourceQuery: /^\?vue/,
-                        use: ['pug-plain-loader']
-                    },
-                    {
-                        use: ['raw-loader', 'pug-plain-loader']
-                    }
-                ]
-            }
-        ]
-    }
-});
+mix.webpackConfig(config);
