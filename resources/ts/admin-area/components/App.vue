@@ -9,11 +9,13 @@ app-navbar
 <script lang="ts">
 import AppNavbar from './AppNavbar.vue'
 
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     name: "App",
 
     components: {
         AppNavbar
     },
-}
+})
 </script>

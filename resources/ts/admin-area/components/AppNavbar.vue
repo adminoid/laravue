@@ -8,12 +8,13 @@ nav.navbar.navbar-dark.bg-light-blue
 
 <script lang="ts">
 import AppNavbarTreeToggleBtn from './AppNavbarTreeToggleBtn.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: "AppNavbar",
 
     components: {
         AppNavbarTreeToggleBtn,
     }
-}
+})
 </script>
