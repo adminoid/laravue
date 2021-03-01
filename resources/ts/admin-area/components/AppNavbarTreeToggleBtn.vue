@@ -1,7 +1,7 @@
 <template lang="pug">
-    a.btn.btn-outline-success(@click="clickHandler")
-        img(src='/img/admin-area/icons/folding.svg')
-        img.toggle(:src="imageUrl")
+a.btn.btn-outline-success(@click="clickHandler")
+    img(src='/img/admin-area/icons/folding.svg')
+    img.toggle(:src="imageUrl")
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import AppNavbarTreeToggleBtn from 'A@/AppNavbarTreeToggleBtn.vue'
+import AppNavbarTreeToggleBtn from './AppNavbarTreeToggleBtn.vue'
 
 describe('AppNavbarTreeToggleBtn.vue', () => {
     it('test img src plus/minus', async () => {

@@ -8,13 +8,7 @@
         "jsx": "preserve",
         "moduleResolution": "node",
         // additional
-        "esModuleInterop": true,
-        "baseUrl": ".",
-        "paths": {
-            "A@/*": [
-                "./resources/ts/admin-area/components/*"
-            ]
-        }
+        "esModuleInterop": true
     },
     "exclude": [
         "node_modules"
