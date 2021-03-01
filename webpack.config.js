@@ -1,11 +1,4 @@
-const path = require('path')
-
 module.exports = {
-    resolve: {
-        alias: {
-            'a@': path.resolve(__dirname, 'resources/ts/admin-area'),
-        },
-    },
     module: {
         rules: [
             {

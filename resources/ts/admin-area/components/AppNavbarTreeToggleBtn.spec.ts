@@ -1,8 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import AppNavbarTreeToggleBtn from '../AppNavbarTreeToggleBtn.vue'
+import AppNavbarTreeToggleBtn from 'A@/AppNavbarTreeToggleBtn.vue'
 
 describe('AppNavbarTreeToggleBtn.vue', () => {
     it('test img src plus/minus', async () => {
+
         const wrapper = shallowMount(AppNavbarTreeToggleBtn)
         const button = wrapper.find('.btn-outline-success')
 
