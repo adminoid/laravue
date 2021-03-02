@@ -5,29 +5,42 @@ a.btn.btn-outline-success(@click="clickHandler")
 </template>
 
 <script lang="ts">
+
 import { defineComponent } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapMutations } = createNamespacedHelpers('layout')
+
 
 export default defineComponent({
     name: "AppNavbarTreeToggleBtn",
 
-    data () {
-        return {
-            open: false
-        }
-    },
-
     computed: {
         imageUrl (): string {
-            let imageName = this.open ? 'minus' : 'plus'
+            let imageName = this.sidebarOpen! ? 'minus' : 'plus'
             return `/img/admin-area/icons/${imageName}.svg`
-        }
+        },
+
+        ...mapState({
+            sidebarOpen: state => state.sidebarOpen,
+        }),
+
     },
 
     methods: {
         clickHandler (): void {
-            this.open = !this.open
-        }
+            this.toggleSidebarStatus()
+            console.log(this.sidebarOpen)
+        },
+
+        ...mapMutations([
+            'toggleSidebarStatus',
+        ])
+
     },
+
+    mounted() {
+        console.log(this.sidebarOpen)
+    }
 })
 
 </script>
