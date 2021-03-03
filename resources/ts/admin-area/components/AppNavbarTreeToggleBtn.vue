@@ -10,7 +10,6 @@ import { defineComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 const { mapState, mapMutations } = createNamespacedHelpers('layout')
 
-
 export default defineComponent({
     name: "AppNavbarTreeToggleBtn",
 
@@ -20,27 +19,21 @@ export default defineComponent({
             return `/img/admin-area/icons/${imageName}.svg`
         },
 
-        ...mapState({
-            sidebarOpen: state => state.sidebarOpen,
-        }),
+        ...mapState([
+            'sidebarOpen',
+        ]),
 
     },
 
     methods: {
         clickHandler (): void {
             this.toggleSidebarStatus()
-            console.log(this.sidebarOpen)
         },
 
         ...mapMutations([
             'toggleSidebarStatus',
         ])
-
     },
-
-    mounted() {
-        console.log(this.sidebarOpen)
-    }
 })
 
 </script>
