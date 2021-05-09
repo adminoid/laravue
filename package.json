@@ -54,5 +54,8 @@
                 "tsconfig": "<rootDir>/tsconfig.json"
             }
         }
+    },
+    "dependencies": {
+        "vuedraggable": "^4.0.1"
     }
 }

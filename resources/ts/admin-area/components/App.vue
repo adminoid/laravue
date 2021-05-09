@@ -11,7 +11,7 @@ app-navbar
 <script lang="ts">
 import AppNavbar from './AppNavbar.vue'
 import AppSidebar from './AppSidebar.vue'
-import AppContent from "./AppContent.vue";
+import AppContent from './AppContent.vue'
 import {computed, defineComponent} from 'vue'
 import {useStore} from "vuex"
 

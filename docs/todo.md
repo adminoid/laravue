@@ -1,6 +1,6 @@
 # TODO
 
-## 7 february 2021 
+## 7 February 2021 
 + make seeds for test data
 + install a frontend, vue, bootstrap
 - install vuex, vue-Sortable
@@ -23,3 +23,8 @@
     </div>
 </li>
 ```
+
+## 9 April 2021
+
+- aliases for jest and ts
+- tree
