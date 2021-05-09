@@ -1,40 +1,31 @@
 <template lang="pug">
-a.btn.btn-outline-success(@click="clickHandler")
+a.btn.btn-outline-success(@click="toggleSidebarStatus")
     img(src='/img/admin-area/icons/folding.svg')
     img.toggle(:src="imageUrl")
 </template>
 
 <script lang="ts">
 
-import { defineComponent } from 'vue'
-import { createNamespacedHelpers } from 'vuex'
-const { mapState, mapMutations } = createNamespacedHelpers('layout')
+import {defineComponent, computed} from 'vue'
+import { useStore } from 'vuex'
 
-export default defineComponent({
-    name: "AppNavbarTreeToggleBtn",
+const AppNavbarTreeToggleBtn = defineComponent({
+    setup() {
+        const store = useStore()
 
-    computed: {
-        imageUrl (): string {
-            let imageName = this.sidebarOpen! ? 'minus' : 'plus'
+        const imageUrl = computed(() => {
+            let imageName = store.state.layout['sidebarOpen'] ? 'minus' : 'plus'
             return `/img/admin-area/icons/${imageName}.svg`
-        },
+        })
 
-        ...mapState([
-            'sidebarOpen',
-        ]),
-
-    },
-
-    methods: {
-        clickHandler (): void {
-            this.toggleSidebarStatus()
-        },
-
-        ...mapMutations([
-            'toggleSidebarStatus',
-        ])
+        return {
+            imageUrl,
+            toggleSidebarStatus: () => store.commit('layout/toggleSidebarStatus'),
+        }
     },
 })
+
+export default AppNavbarTreeToggleBtn
 
 </script>
 

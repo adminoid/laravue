@@ -1,5 +1,5 @@
 <template lang="pug">
-nav.navbar.navbar-dark.bg-light-blue
+nav.navbar.navbar-dark
     .container-fluid
         ul.navbar-nav
             li.nav-item
