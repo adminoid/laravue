@@ -1,68 +1,57 @@
-<template>
-    <draggable
-        class="dragArea"
-        tag="ul"
-        :list="tasks"
-        :group="{ name: 'g1' }"
-        item-key="name"
-    >
-        <template #item="{ element }">
-            <li>
-                <p>{{ element.name }}</p>
-                <app-tree :tasks="element.tasks" />
-            </li>
-        </template>
-    </draggable>
+<template lang="pug">
+app-tree-list(
+    :list="tree"
+)
 </template>
 
-<script>
-import draggable from 'vuedraggable'
+<script lang="ts">
 import {defineComponent, reactive} from 'vue'
+import AppTreeList from "./AppTreeList.vue";
 
 const AppTree = defineComponent({
+    components: {AppTreeList},
     setup() {
-        const tasks = reactive([
+        const tree = reactive([
             {
+                id: 1,
                 name: "task 1",
-                tasks: [
+                children: [
                     {
+                        id: 2,
                         name: "task 2",
-                        tasks: []
+                        children: []
                     }
                 ]
             },
             {
+                id: 3,
                 name: "task 3",
-                tasks: [
+                children: [
                     {
+                        id: 4,
                         name: "task 4",
-                        tasks: []
+                        children: [
+                            {
+                                id: 6,
+                                name: "task 6",
+                                children: []
+                            }
+                        ]
                     }
                 ]
             },
             {
+                id: 5,
                 name: "task 5",
-                tasks: []
             }
         ])
 
         return {
-            tasks,
+            tree,
         }
-    },
-
-    components: {
-        draggable
     },
 
 })
 
 export default AppTree
 </script>
-
-<style scoped>
-.dragArea {
-    min-height: 50px;
-    outline: 1px dashed;
-}
-</style>
