@@ -1,11 +1,17 @@
 <template lang="pug">
-ul
-    li(v-for="(item, i) in list" :ref="el => { if (el) elements[i] = el }") {{ item.name }}
+ul(ref='ul')
+    li(v-for="item in list") {{ item.name }}
         app-tree-list(:list="item.children")
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, reactive} from 'vue'
+import {
+    defineComponent,
+    reactive,
+    ref,
+    onMounted,
+    onUnmounted
+} from 'vue'
 import Sortable from 'sortablejs'
 
 const AppTreeList = defineComponent({
@@ -13,26 +19,25 @@ const AppTreeList = defineComponent({
         list: Array,
     },
 
-    setup(props) {
-        const elements = reactive([])
+    setup() {
+        const ul = ref()
+        let sortable = reactive({})
         onMounted(() => {
-            const length = props.list?.length
-            if (length) {
-                for (let i = 0; i < length; i++) {
-                    if (elements) {
-                        new Sortable(elements[i], {
-                            group: 'nested',
-                            animation: 150,
-                            fallbackOnBody: true,
-                            swapThreshold: 0.65
-                        })
-                    }
-                }
-            }
+            sortable = new Sortable(ul.value as HTMLElement, {
+                group: 'nested',
+                animation: 150,
+                fallbackOnBody: true,
+                swapThreshold: 0.65,
+            })
+        })
+
+        onUnmounted(() => {
+            (sortable as any).destroy()
         })
 
         return {
-            elements,
+            ul,
+            sortable,
         }
 
     },
