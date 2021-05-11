@@ -2,33 +2,39 @@ export default {
     namespaced: true,
 
     state: () => ({
-        children: [
+        tree: [
             {
                 id: 1,
-                name: "Shrek",
-                children: []
-            },
-            {
-                id: 2,
-                name: "Fiona",
+                name: "task 1",
                 children: [
                     {
-                        id: 4,
-                        name: "Lord Peter",
-                        children: []
-                    },
-                    {
-                        id: 5,
-                        name: "Prince Charming",
+                        id: 2,
+                        name: "task 2",
                         children: []
                     }
                 ]
             },
             {
                 id: 3,
-                name: "Donkey",
-                children: []
-            }
-        ],
+                name: "task 3",
+                children: [
+                    {
+                        id: 4,
+                        name: "task 4",
+                        children: [
+                            {
+                                id: 6,
+                                name: "task 6",
+                                children: []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: "task 5",
+            },
+        ]
     }),
 }
