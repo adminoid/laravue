@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    public function isAdmin() {
+        return (bool) $this->roles()->where('name', '=', 'Admin')->count();
+    }
 }

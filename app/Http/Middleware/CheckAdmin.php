@@ -14,13 +14,12 @@ class CheckAdmin
      * @param  Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next): mixed
+    public function handle(Request $request, Closure $next)
     {
-        if (!$request->user())
+        $user = $request->user();
+        if (!$user || !$user->isAdmin()) {
             return redirect('login');
-        elseif($request->user()->email('mr@adminoid.com'))
-            return $next($request);
-        else
-            return $next($request);
+        }
+        return $next($request);
     }
 }
