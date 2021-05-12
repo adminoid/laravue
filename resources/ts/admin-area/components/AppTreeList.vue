@@ -1,6 +1,6 @@
 <template lang="pug">
 ul(ref='ul')
-    li(v-for="item in list") {{ item.name }}
+    li(v-for="item in list") {{ item.title }}
         app-tree-list(:list="item.children")
 </template>
 
@@ -24,7 +24,7 @@ const AppTreeList = defineComponent({
         let sortable = reactive({})
         onMounted(() => {
             sortable = new Sortable(ul.value as HTMLElement, {
-                group: 'nested',
+                group: 'tree',
                 animation: 150,
                 fallbackOnBody: true,
                 swapThreshold: 0.65,
