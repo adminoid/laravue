@@ -28,3 +28,9 @@
 
 - aliases for jest and ts
 - tree
+  - give away tree to frontend throught middleware
+  - make buttons on tree leaves
+  - create handlers for moving tree elements
+- make frontend routing 
+- upload on test server
+

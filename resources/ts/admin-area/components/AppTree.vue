@@ -5,22 +5,25 @@ app-tree-list(
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive} from 'vue'
+import {defineComponent, onMounted} from 'vue'
 import AppTreeList from "./AppTreeList.vue"
 import {useStore} from "vuex";
 
 const AppTree = defineComponent({
     components: {AppTreeList},
     setup() {
+        const getTree = () => store.dispatch('tree/getTree')
+
+        onMounted(() => {
+            getTree()
+        })
+
         const store = useStore()
-
-        // const tree = reactive()
-
         return {
             tree: store.state.tree['tree'],
+            getTree,
         }
     },
-
 })
 
 export default AppTree
