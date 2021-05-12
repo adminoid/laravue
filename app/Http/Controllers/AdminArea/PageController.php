@@ -15,10 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'name' => 'Abigail',
-            'state' => 'CA',
-        ]);
+        return response()->json(Page::get()->toTree()->toArray());
     }
 
     /**

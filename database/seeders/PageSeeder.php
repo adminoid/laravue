@@ -29,8 +29,8 @@ class PageSeeder extends Seeder
             'template' => 'Special',
         ]);
 
-        for ($i = 0; $i <= 4; $i++) {
-            if ($i === 0 || $i === 4) {
+        for ($i = 0; $i <= 5; $i++) {
+            if ($i === 0 || $i === 3) {
                 ${"page_" . $i} = PageSpecial::create(['special_field' => 'special field value ' . $i]);
             }
             else {
@@ -38,16 +38,21 @@ class PageSeeder extends Seeder
             }
         }
 
+        /* @var $page_0
+         * @var $page_1
+         * @var $page_2
+         * @var $page_3
+         * @var $page_4
+         * @var $page_5 */
+
         $mainPage = Page::create(['title' => 'Main page']);
-        $mainPage->wrap($specialType, $page_0, $node = false);
+        $mainPage->wrap($specialType, $page_0);
 
         $childPage1 = Page::create(['title' => 'child page one']);
-        $childPage1->wrap($standardType, $page_1, $mainPage);
-        $childPage1->appendToNode($mainPage)->save();
+        $childPage1->wrap($standardType, $page_1);
 
         $childPage2 = Page::create(['title' => 'child page two']);
-        $childPage2->wrap($standardType, $page_2, $mainPage);
-        $childPage2->appendToNode($mainPage)->save();
+        $childPage2->wrap($standardType, $page_2);
 
         $grandChildPage3 = Page::create(['title' => 'grand child page one']);
         $grandChildPage3->wrap($standardType, $page_3, $childPage1);
@@ -55,6 +60,10 @@ class PageSeeder extends Seeder
 
         $grandChildPage4 = Page::create(['title' => 'grand child page two']);
         $grandChildPage4->wrap($specialType, $page_4, $childPage2);
+        $grandChildPage4->appendToNode($childPage2)->save();
+
+        $grandChildPage4 = Page::create(['title' => 'grand child page two']);
+        $grandChildPage4->wrap($standardType, $page_5, $childPage2);
         $grandChildPage4->appendToNode($childPage2)->save();
 
     }
