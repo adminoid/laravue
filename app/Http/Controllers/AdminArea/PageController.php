@@ -15,7 +15,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return response()->json(Page::get()->toTree()->toArray());
+        // need to add special fields: id, _lft, parent_id
+        return response()->json(Page::get(['id', '_lft', 'parent_id', 'title'])->toTree()->toArray());
     }
 
     /**

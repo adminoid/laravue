@@ -48,23 +48,23 @@ class PageSeeder extends Seeder
         $mainPage = Page::create(['title' => 'Main page']);
         $mainPage->wrap($specialType, $page_0);
 
+        $secondPage = Page::create(['title' => 'Second page']);
+        $secondPage->wrap($standardType, $page_1);
+
+        $thirdPage = Page::create(['title' => 'Third page']);
+        $thirdPage->wrap($standardType, $page_2);
+
         $childPage1 = Page::create(['title' => 'child page one']);
-        $childPage1->wrap($standardType, $page_1);
+        $childPage1->wrap($standardType, $page_3, $secondPage);
+        $childPage1->appendToNode($secondPage)->save();
 
         $childPage2 = Page::create(['title' => 'child page two']);
-        $childPage2->wrap($standardType, $page_2);
+        $childPage2->wrap($specialType, $page_4, $thirdPage);
+        $childPage2->appendToNode($thirdPage)->save();
 
-        $grandChildPage3 = Page::create(['title' => 'grand child page one']);
-        $grandChildPage3->wrap($standardType, $page_3, $childPage1);
-        $grandChildPage3->appendToNode($childPage1)->save();
-
-        $grandChildPage4 = Page::create(['title' => 'grand child page two']);
-        $grandChildPage4->wrap($specialType, $page_4, $childPage2);
-        $grandChildPage4->appendToNode($childPage2)->save();
-
-        $grandChildPage4 = Page::create(['title' => 'grand child page two']);
-        $grandChildPage4->wrap($standardType, $page_5, $childPage2);
-        $grandChildPage4->appendToNode($childPage2)->save();
+        $grandChildPage = Page::create(['title' => 'grand child page']);
+        $grandChildPage->wrap($standardType, $page_5, $thirdPage);
+        $grandChildPage->appendToNode($childPage2)->save();
 
     }
 }
