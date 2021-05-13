@@ -18,6 +18,9 @@ class CheckAdmin
     {
         $user = $request->user();
         if (!$user || !$user->isAdmin()) {
+            if ($request->expectsJson()) {
+                abort(response()->json('Unauthorized', 403));
+            }
             return redirect('login');
         }
         return $next($request);

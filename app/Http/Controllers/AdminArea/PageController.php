@@ -5,9 +5,16 @@ namespace App\Http\Controllers\AdminArea;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *

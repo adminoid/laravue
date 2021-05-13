@@ -34,3 +34,5 @@
 - make frontend routing 
 - upload on test server
 
+## Sanctum with socialite
+<https://bipinmhz.medium.com/sanctum-with-socialite-api-authentication-via-social-networks-in-laravel-8-624cb1737e8>
