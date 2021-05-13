@@ -2,14 +2,14 @@
 .tree
     ul(ref='ul')
         li(v-for="item in list")
-            a(href='')
+            a(href='' @click.prevent="toggle")
                 img(src='/img/admin-area/icons/minus.svg' alt='Свернуть')
             span.move
                 img(src='/img/admin-area/icons/move.svg' alt='Переместить')
             a.link(href='') {{ item.title }}
-            a.del(href='')
+            a.del(href='' @click.prevent="del")
                 img(src='/img/admin-area/icons/del.svg' alt='Удалить')
-            a.add(href='')
+            a.add(href='' @click.prevent="add")
                 img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
 
             app-tree-list(:list="item.children")
@@ -47,9 +47,22 @@ const AppTreeList = defineComponent({
             (sortable as any).destroy()
         })
 
+        const toggle = () => {
+            console.info('toggle')
+        }
+        const del = () => {
+            confirm('Удалить?')
+        }
+        const add = () => {
+            confirm('Добавить?')
+        }
+
         return {
             ul,
             sortable,
+            toggle,
+            del,
+            add,
         }
 
     },
