@@ -1,12 +1,12 @@
 <template lang="pug">
 div(:class="containerClass")
-    main
-        h1 Content
+    router-view
 </template>
 
 <script lang="ts">
 import {computed, defineComponent} from 'vue'
 import {useStore} from "vuex"
+import Page from 'a-ts@/pages/Page.vue'
 
 const AppContent = defineComponent({
     setup() {
@@ -19,7 +19,9 @@ const AppContent = defineComponent({
         return {
             containerClass,
         }
-    }
+    },
+
+    components: { Page }
 })
 
 export default AppContent

@@ -6,7 +6,7 @@
                 img(src='/img/admin-area/icons/minus.svg' alt='Свернуть')
             span.move
                 img(src='/img/admin-area/icons/move.svg' alt='Переместить')
-            a.link(href='') {{ item.title }}
+            router-link.link(:to="'/page/' + item.id") {{ item.title }}
             a.del(href='' @click.prevent="del")
                 img(src='/img/admin-area/icons/del.svg' alt='Удалить')
             a.add(href='' @click.prevent="add")
