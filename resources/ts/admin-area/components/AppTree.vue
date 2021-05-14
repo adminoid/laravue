@@ -1,7 +1,8 @@
 <template lang="pug">
-app-tree-list(
-    :list="tree"
-)
+.tree-wrapper
+    app-tree-list(
+        :list="tree"
+    )
 </template>
 
 <script lang="ts">
@@ -26,3 +27,8 @@ const AppTree = defineComponent({
 
 export default AppTree
 </script>
+
+<style lang="sass">
+.tree-wrapper
+    padding-top: 0.5rem
+</style>

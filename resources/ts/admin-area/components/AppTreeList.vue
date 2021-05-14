@@ -73,11 +73,14 @@ export default AppTreeList
 
 <style lang="sass" scoped>
 .tree
-    ul > li
-        list-style-type: none
-        a, span
-            margin-right: .3rem
-        span.move
-            cursor: move
+    ul
+        padding-left: 0.7rem
+        > li
+            padding: 0.3rem 0 0
+            list-style-type: none
+            a, span
+                margin-right: .3rem
+            span.move
+                cursor: move
 
 </style>

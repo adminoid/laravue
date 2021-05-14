@@ -2,7 +2,7 @@
 
 app-navbar
 .container-fluid
-    .row
+    .page-container
         app-sidebar(v-if="sidebarOpen")
         app-content
 
@@ -32,3 +32,9 @@ const App = defineComponent({
 
 export default App
 </script>
+
+<style lang="sass">
+.page-container
+    display: flex
+    padding-top: .5rem
+</style>

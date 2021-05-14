@@ -1,6 +1,7 @@
 <template lang="pug">
 div(:class="containerClass")
-    router-view
+    .container-fluid.content-container
+        router-view
 </template>
 
 <script lang="ts">
@@ -26,3 +27,8 @@ const AppContent = defineComponent({
 
 export default AppContent
 </script>
+
+<style lang="sass">
+.content-container
+
+</style>
