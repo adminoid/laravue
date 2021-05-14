@@ -37,26 +37,9 @@
         "vuex": "^4.0.0",
         "webpack": "^5.36.2"
     },
-    "jest": {
-        "moduleFileExtensions": [
-            "ts",
-            "js",
-            "json",
-            "vue"
-        ],
-        "transform": {
-            "^.+\\.js$": "babel-jest",
-            "^.+\\.vue$": "vue-jest",
-            "^.+\\.tsx?$": "ts-jest"
-        },
-        "globals": {
-            "ts-jest": {
-                "tsconfig": "<rootDir>/tsconfig.json"
-            }
-        }
-    },
     "dependencies": {
         "@types/sortablejs": "^1.10.6",
-        "sortablejs": "^1.13.0"
+        "sortablejs": "^1.13.0",
+        "vue-router": "^4.0.8"
     }
 }

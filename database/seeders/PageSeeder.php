@@ -19,13 +19,13 @@ class PageSeeder extends Seeder
     {
         $standardType = PageType::create([
             'model' => 'PageStandard',
-            'vue_component' => 'PageStandard.vue',
+            'vue_component' => 'PageStandard',
             'template' => 'Standard',
         ]);
 
         $specialType = PageType::create([
             'model' => 'PageSpecial',
-            'vue_component' => 'PageSpecial.vue',
+            'vue_component' => 'PageSpecial',
             'template' => 'Special',
         ]);
 

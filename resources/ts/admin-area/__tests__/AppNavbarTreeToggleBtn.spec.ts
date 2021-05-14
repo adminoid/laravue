@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
-import AppNavbarTreeToggleBtn from './AppNavbarTreeToggleBtn.vue'
-import store from '../store'
+import AppNavbarTreeToggleBtn from 'a-cmp@/AppNavbarTreeToggleBtn.vue'
+// @ts-ignore
+import store from 'a-ts@/store'
 
 describe('AppNavbarTreeToggleBtn.vue', () => {
     it('test img src plus/minus', async () => {

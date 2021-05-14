@@ -1,6 +1,10 @@
 const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
+    watchOptions: {
+        ignored: /node_modules/
+    },
     module: {
         rules: [
             {
@@ -28,6 +32,14 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        symlinks: false,
+        extensions: ['.js', '.vue'],
+        alias: {
+            'a-ts@': path.join(__dirname, 'resources/ts/admin-area/'),
+            'a-cmp@': path.join(__dirname, 'resources/ts/admin-area/components/'),
+        }
     },
     plugins: [
         new webpack.DefinePlugin({
