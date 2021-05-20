@@ -1,15 +1,20 @@
 <template lang="pug">
 main
-    h1 {{ $route.params.id }}
+    h1(v-if="id") {{ id }}
+    h2(v-else) &lt;- Выберите страницу для редактирования
 
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {computed, defineComponent} from 'vue'
+import {useRoute} from "vue-router";
 
 const Page = defineComponent({
     setup() {
-        return {}
+        const route = useRoute()
+        return {
+            id: computed(() => route.params.id),
+        }
     }
 })
 

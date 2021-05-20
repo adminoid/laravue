@@ -5,7 +5,7 @@ h1 404
 <script lang="ts">
 import {defineComponent} from 'vue'
 
-const NotFound = defineComponent({})
+const Page404 = defineComponent({})
 
-export default NotFound
+export default Page404
 </script>

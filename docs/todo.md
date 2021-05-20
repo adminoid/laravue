@@ -31,8 +31,12 @@
   - give away tree to frontend throught middleware
   - make buttons on tree leaves
   - create handlers for moving tree elements
-- make frontend routing 
+- make frontend routing
 - upload on test server
 
 ## Sanctum with socialite
 <https://bipinmhz.medium.com/sanctum-with-socialite-api-authentication-via-social-networks-in-laravel-8-624cb1737e8>
+
+## Axios progress bar
+<https://stackoverflow.com/questions/54213601/how-to-show-progress-of-axios-during-get-request-not-download-or-upload>
+<https://getbootstrap.com/docs/4.0/components/progress/>
