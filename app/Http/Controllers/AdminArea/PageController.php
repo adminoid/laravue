@@ -16,6 +16,14 @@ class PageController extends Controller
     }
 
     /**
+     * Custom methods
+     */
+    public function getList($id)
+    {
+        dd($id);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse

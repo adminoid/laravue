@@ -27,8 +27,3 @@ const AppContent = defineComponent({
 
 export default AppContent
 </script>
-
-<style lang="sass">
-.content-container
-
-</style>

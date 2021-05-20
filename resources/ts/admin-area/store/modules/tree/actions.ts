@@ -1,7 +1,11 @@
 import axios from 'axios'
 export default {
-    async getTree (context: { commit: (arg0: string, data: any) => void }) {
+    async getTree({ commit }: { commit: Function }) {
         const response = await axios.get('/api/pages/')
-        context.commit('setTree', response.data)
+        commit('setTree', response.data)
     },
+
+    // async getList(context: { commit: (arg0: string, data: any) => void }) {
+    //     const response = await axios.get('/api/children/')
+    // },
 }

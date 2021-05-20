@@ -1,0 +1,88 @@
+<template lang="pug">
+li
+    a(href='' @click.prevent="toggle")
+        img(src='/img/admin-area/icons/minus.svg' alt='Свернуть')
+    span.move
+        img(src='/img/admin-area/icons/move.svg' alt='Переместить')
+    router-link.link(:to="'/' + item.id") {{ item.title }}
+    a.del(href='' @click.prevent="del")
+        img(src='/img/admin-area/icons/del.svg' alt='Удалить')
+    a.add(href='' @click.prevent="add")
+        img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
+
+    app-tree-list(:list="item.children")
+</template>
+
+<script lang="ts">
+import {
+    defineComponent,
+    computed, PropType, ref,
+    defineAsyncComponent,
+} from 'vue'
+
+interface IItem {
+    id: number
+    _lft: number
+    parent_id: number | null
+    title: string
+    folder: boolean
+    children: object[]
+}
+
+const AppTreeListItem = defineComponent({
+    components: {
+        AppTreeList: defineAsyncComponent(() => import('./AppTreeList.vue') as any),
+    },
+
+    props: {
+        item: {
+            type: Object as PropType<IItem>
+        },
+    },
+
+    setup(props: any) {
+        const toggle = () => {
+            console.info('toggle')
+        }
+        const del = () => {
+            confirm('Удалить?')
+        }
+        const add = () => {
+            confirm('Добавить?')
+        }
+
+        const open = ref(true)
+        const icon = computed(() => {
+            if (props.item.folder) {
+                return (open) ? 'minus' : 'plus'
+            }
+            return 'empty'
+        })
+
+        return {
+            toggle,
+            del,
+            add,
+            icon,
+            open,
+        }
+
+    },
+})
+
+export default AppTreeListItem
+</script>
+
+<style lang="sass" scoped>
+.tree
+    ul
+        padding-left: 0.7rem
+        > li
+            padding: 0.3rem 0 0
+            list-style-type: none
+            a, span
+                margin-right: .3rem
+            span.move
+                cursor: move
+
+</style>
