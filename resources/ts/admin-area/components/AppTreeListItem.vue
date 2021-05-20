@@ -1,7 +1,7 @@
 <template lang="pug">
 li
     a(href='' @click.prevent="toggle")
-        img(src='/img/admin-area/icons/minus.svg' alt='Свернуть')
+        img(:src="`/img/admin-area/icons/${icon}.svg`" alt='Свернуть')
     span.move
         img(src='/img/admin-area/icons/move.svg' alt='Переместить')
     router-link.link(:to="'/' + item.id") {{ item.title }}
@@ -10,7 +10,7 @@ li
     a.add(href='' @click.prevent="add")
         img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
 
-    app-tree-list(:list="item.children")
+    app-tree-list(v-if="open" :list="item.children")
 </template>
 
 <script lang="ts">
@@ -41,8 +41,10 @@ const AppTreeListItem = defineComponent({
     },
 
     setup(props: any) {
+
+        let open = ref(false)
         const toggle = () => {
-            console.info('toggle')
+            open.value = !open.value
         }
         const del = () => {
             confirm('Удалить?')
@@ -51,10 +53,9 @@ const AppTreeListItem = defineComponent({
             confirm('Добавить?')
         }
 
-        const open = ref(true)
         const icon = computed(() => {
             if (props.item.folder) {
-                return (open) ? 'minus' : 'plus'
+                return (open.value) ? 'minus' : 'plus'
             }
             return 'empty'
         })
