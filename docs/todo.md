@@ -40,3 +40,8 @@
 ## Axios progress bar
 <https://stackoverflow.com/questions/54213601/how-to-show-progress-of-axios-during-get-request-not-download-or-upload>
 <https://getbootstrap.com/docs/4.0/components/progress/>
+
+## tree functionality
+- get only list with param 'folder'
+- plus/minus/empty for leaves
+- get moved to when drag end
