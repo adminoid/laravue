@@ -16,6 +16,7 @@ class CreatePageStandardsTable extends Migration
         Schema::create('page_standards', function (Blueprint $table) {
             $table->id();
             $table->string('standard_field')->nullable();
+            $table->text('standard_text')->nullable();
             $table->timestamps();
         });
     }

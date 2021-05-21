@@ -16,6 +16,7 @@ class CreatePageSpecialsTable extends Migration
         Schema::create('page_specials', function (Blueprint $table) {
             $table->id();
             $table->string('special_field')->nullable();
+            $table->text('special_text')->nullable();
             $table->timestamps();
         });
     }
