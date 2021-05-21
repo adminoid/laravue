@@ -38,6 +38,15 @@ class PageController extends Controller
                     return $page;
                 })
                 ->toTree()
+                ->map(function ($page) {
+                    if ($page->id == 2) {
+                        if ($page->folder) {
+                            unset($page['children']);
+                            $page->children = [];
+                        }
+                    }
+                    return $page;
+                })
                 ->toArray()
         );
     }

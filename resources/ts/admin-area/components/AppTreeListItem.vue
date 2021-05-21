@@ -16,8 +16,10 @@ li
 <script lang="ts">
 import {
     defineComponent,
-    computed, PropType, ref,
+    computed,
+    ref,
     defineAsyncComponent,
+    PropType,
 } from 'vue'
 
 interface IItem {
