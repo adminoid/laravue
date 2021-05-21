@@ -5,7 +5,6 @@ namespace App\Http\Controllers\AdminArea;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -38,15 +37,6 @@ class PageController extends Controller
                     return $page;
                 })
                 ->toTree()
-                ->map(function ($page) {
-                    if ($page->id == 2) {
-                        if ($page->folder) {
-                            unset($page['children']);
-                            $page->children = [];
-                        }
-                    }
-                    return $page;
-                })
                 ->toArray()
         );
     }
