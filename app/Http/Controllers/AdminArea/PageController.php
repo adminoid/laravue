@@ -17,10 +17,10 @@ class PageController extends Controller
     /**
      * Custom methods
      */
-    public function getList($id)
-    {
-        dd($id);
-    }
+//    public function getList($id)
+//    {
+//        dd($id);
+//    }
 
     /**
      * Display a listing of the resource.
@@ -66,11 +66,12 @@ class PageController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Page  $page
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Page $page)
     {
-        //
+//        return response()->json($page->id);
+        return response()->json($page->with(['pageable', 'page_type'])->find($page->id));
     }
 
     /**

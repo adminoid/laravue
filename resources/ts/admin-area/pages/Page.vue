@@ -1,17 +1,25 @@
 <template lang="pug">
 main
-    h1(v-if="id") {{ id }}
+    .page(v-if="id")
+        pre {{ page[id] }}
     h2(v-else) &lt;-- выберите страницу для редактирования
 </template>
 
 <script lang="ts">
-import {computed, defineComponent} from 'vue'
+import {computed, defineComponent, watchEffect} from 'vue'
 import {useRoute} from "vue-router"
+import {useStore} from "vuex";
 const Page = defineComponent({
     setup() {
         const route = useRoute()
+        const store = useStore()
+        const id = computed(() => route.params.id)
+        const getPage = () => store.dispatch('page/getPage', id.value)
+        watchEffect(() => getPage())
         return {
-            id: computed(() => route.params.id),
+            id,
+            getPage,
+            page: computed(() => store.state.page['pages']),
         }
     }
 })

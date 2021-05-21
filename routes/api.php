@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('children/{id?}', 'PageController@getList')->where('id', '[0-9]+');
+//Route::get('children/{id?}', 'PageController@getList')->where('id', '[0-9]+');
 Route::resource('pages', PageController::class);
