@@ -8,9 +8,9 @@ textarea-simple(:value="page.pageable.spacial_text" :name="'special_text'")
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue'
+import {IPage} from "./index";
 import InputText from 'a-cmp@/form/InputText.vue'
 import TextareaSimple from 'a-cmp@/form/TextareaSimple.vue'
-import {IPage} from "./index";
 
 const PageSpecial = defineComponent({
     components: {

@@ -1,12 +1,10 @@
 <template lang="pug">
-.mt-3.row
-
-label.form-label(:for="name + '-field'") {{ name }}
-textarea.form-control(
-    rows="3"
-    :id="name + '-field'"
-) {{ value }}
-
+.field.mt-3
+    label.form-label(:for="name + '-field'") {{ name }}
+    textarea.form-control(
+        rows="3"
+        :id="name + '-field'"
+    ) {{ value }}
 </template>
 
 <script lang="ts">

@@ -1,16 +1,25 @@
 <template lang="pug">
-.mb-3.row
-    label.col-sm-2.col-form-label(for='name-field') Пункт меню
-    .col-sm-10
-        input#name-field.form-control-plaintext(type='text')
+
+input-text(:value="page.name" :name="'name'")
+input-text(:value="page.title" :name="'title'")
+textarea-editor(:value="page.pageable.standard_text" :name="'standard_text'")
+
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, PropType} from 'vue'
+import {IPage} from "./index";
+import InputText from 'a-cmp@/form/InputText.vue'
+import TextareaEditor from "../components/form/TextareaEditor.vue";
 
 const PageStandard = defineComponent({
+    components: {
+        InputText,
+        TextareaEditor,
+    },
+
     props: {
-        page: Object,
+        page: Object as PropType<IPage>,
     },
 
     setup() {

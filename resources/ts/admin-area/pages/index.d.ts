@@ -6,5 +6,6 @@ export interface IPage {
     }
     pageable: {
         spacial_text: string
+        standard_text: string
     },
 }
