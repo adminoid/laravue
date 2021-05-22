@@ -1,7 +1,7 @@
 <template lang="pug">
 .tree
     ul(ref='ul')
-        app-tree-list-item(v-for="item in list" :item="item")
+        app-tree-list-item(v-for="page in list" :page="page")
 </template>
 
 <script lang="ts">

@@ -1,8 +1,9 @@
 <template lang="pug">
 main
-    .page(v-if="id")
-        component(v-if="componentName" :is="componentName")
-    h2(v-else) &lt;-- выберите страницу для редактирования
+    .page(v-if="id && page")
+        h1 {{ page.title }}
+        component(v-if="componentName" :is="componentName" :page="page")
+    h2(v-else) Загрузка...
 </template>
 
 <script lang="ts">
@@ -10,16 +11,18 @@ import {
     computed,
     defineComponent,
     watchEffect,
-    ComputedRef,
     defineAsyncComponent,
 } from 'vue'
 import {useRoute} from "vue-router"
 import {useStore} from "vuex";
 
+// todo: add error handler
+
 interface IPage {
     page_type: {
         model: string
     }
+    title: string
 }
 
 const Page = defineComponent({
@@ -29,17 +32,18 @@ const Page = defineComponent({
     },
 
     setup() {
-        const route = useRoute()
-        const store = useStore()
-        const id: any = computed(() => route.params.id)
-        const getPage = () => store.dispatch('page/getPage', id.value)
-        watchEffect(() => getPage())
+        const route = useRoute(),
+            store = useStore(),
+            id: any = computed(() => route.params.id),
+            getPage = () => store.dispatch('page/getPage', id.value),
+            page = computed((): IPage => {
+                return store.state.page['pages'][id.value]
+            }),
+            componentName = computed(() => {
+                return (page.value) ? page.value.page_type.model : false
+            })
 
-        const page = computed(() => store.state.page['pages'])
-        const componentName = computed(() => {
-            const pageData : IPage = page.value[id.value]
-            return (pageData) ? pageData.page_type.model : false
-        })
+        watchEffect(() => getPage())
 
         return {
             id,

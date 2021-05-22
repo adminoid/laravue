@@ -4,13 +4,13 @@ li
         img(:src="`/img/admin-area/icons/${icon}.svg`" alt='Свернуть')
     span.move
         img(src='/img/admin-area/icons/move.svg' alt='Переместить')
-    router-link.link(:to="'/' + item.id") {{ item.title }}
+    router-link.link(:to="'/' + page.id") {{ page.name || page.title }}
     a.del(href='' @click.prevent="del")
         img(src='/img/admin-area/icons/del.svg' alt='Удалить')
     a.add(href='' @click.prevent="add")
         img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
 
-    app-tree-list(v-if="open" :list="item.children")
+    app-tree-list(v-if="open" :list="page.children")
 </template>
 
 <script lang="ts">
@@ -26,6 +26,7 @@ interface IItem {
     id: number
     _lft: number
     parent_id: number | null
+    name?: string
     title: string
     folder: boolean
     children: object[]
@@ -37,7 +38,7 @@ const AppTreeListItem = defineComponent({
     },
 
     props: {
-        item: {
+        page: {
             type: Object as PropType<IItem>
         },
     },
@@ -56,7 +57,7 @@ const AppTreeListItem = defineComponent({
         }
 
         const icon = computed(() => {
-            if (props.item.folder) {
+            if (props.page.folder) {
                 return (open.value) ? 'minus' : 'plus'
             }
             return 'empty'
