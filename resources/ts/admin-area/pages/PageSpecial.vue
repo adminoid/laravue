@@ -2,20 +2,26 @@
 
 input-text(:value="page.name" :name="'name'")
 input-text(:value="page.title" :name="'title'")
+textarea-simple(:value="page.pageable.spacial_text" :name="'special_text'")
 
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, PropType} from 'vue'
 import InputText from 'a-cmp@/form/InputText.vue'
+import TextareaSimple from 'a-cmp@/form/TextareaSimple.vue'
+import {IPage} from "./index";
 
 const PageSpecial = defineComponent({
     components: {
         InputText,
+        TextareaSimple,
     },
 
     props: {
-        page: Object,
+        page: {
+            type: Object as PropType<IPage>,
+        },
     },
 
     setup() {

@@ -15,15 +15,9 @@ import {
 } from 'vue'
 import {useRoute} from "vue-router"
 import {useStore} from "vuex";
+import {IPage} from "./index";
 
 // todo: add error handler
-
-interface IPage {
-    page_type: {
-        model: string
-    }
-    title: string
-}
 
 const Page = defineComponent({
     components: {
