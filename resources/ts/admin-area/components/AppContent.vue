@@ -15,7 +15,7 @@ const AppContent = defineComponent({
         const containerClass = computed(
             _ =>
                 (store.state.layout.sidebarOpen) ?
-                    'col-8' : 'col-12'
+                    'col-8 col-sm-7' : 'col-12'
         )
         return {
             containerClass,

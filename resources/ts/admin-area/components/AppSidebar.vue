@@ -1,5 +1,5 @@
 <template lang="pug">
-.sidebar.col-4
+.sidebar.col-3.col-sm-5
     app-tree
 </template>
 

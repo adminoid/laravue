@@ -1,15 +1,19 @@
 <template lang="pug">
-pre {{ page }}
-.mb-3.row
-    label.col-sm-2.col-form-label(for='name-field') Пункт меню
-    .col-sm-10
-        input#name-field.form-control-plaintext(type='text')
+
+input-text(:value="page.name" :name="'name'")
+input-text(:value="page.title" :name="'title'")
+
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import InputText from 'a-cmp@/form/InputText.vue'
 
 const PageSpecial = defineComponent({
+    components: {
+        InputText,
+    },
+
     props: {
         page: Object,
     },
