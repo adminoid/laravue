@@ -19,7 +19,8 @@ class PageController extends Controller
      */
     public function move(Request $request)
     {
-        //        abort(403, 'Unauthorized action. yoyo');
+        abort(403, 'test error');
+
         $id = $request->get('id');
         $index = $request->get('index');
         $parent = $request->get('parent');
@@ -54,8 +55,10 @@ class PageController extends Controller
                 $node->afterNode($neighbor)->save();
             }
         }
-        return response(['msg' => __('admin-panel.page_moved')]);
+        return response(['msg' => 'success']);
     }
+
+    // todo: make method for getting incomplete tree
 //    public function getList($id)
 //    {
 //        dd($id);

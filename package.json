@@ -12,6 +12,7 @@
     },
     "devDependencies": {
         "@types/jest": "^26.0.23",
+        "@types/lodash": "^4.14.170",
         "@types/sortablejs": "^1.10.6",
         "@vue/compiler-sfc": "^3.0.5",
         "@vue/test-utils": "^2.0.0-rc.1",
@@ -35,6 +36,7 @@
     "dependencies": {
         "axios": "^0.21.1",
         "bootstrap": "5.0.1",
+        "lodash": "^4.17.21",
         "sortablejs": "^1.13.0",
         "vue": "^3.0.5",
         "vue-router": "^4.0.8",

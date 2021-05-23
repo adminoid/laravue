@@ -12,7 +12,6 @@ import {
     onMounted,
     onUnmounted,
     computed,
-    toRef,
 } from 'vue'
 import Sortable from 'sortablejs'
 import {useStore} from "vuex";
@@ -36,7 +35,9 @@ const AppTreeList = defineComponent({
         const ul = ref()
         let sortable = reactive({})
 
-        const store = useStore()
+        const store = useStore(),
+            move = (payload: object) => store.dispatch('tree/move', payload)
+
         const tree = computed(() => store.state.tree['tree'])
         onMounted(() => {
             sortable = new Sortable(ul.value as HTMLElement, {
@@ -46,18 +47,21 @@ const AppTreeList = defineComponent({
                 handle: '.move',
                 onEnd: function (e) {
                     const items = ref(props.list).value,
-                        oldContainerId = e.from.getAttribute('data-parent'),
-                        newContainerId = e.to.getAttribute('data-parent'),
+                        oldParent = e.from.getAttribute('data-parent'),
+                        parent = e.to.getAttribute('data-parent'),
                         //@ts-ignore
                         id = items[e.oldIndex].id,
                         oldIndex = e.oldIndex,
-                        newIndex = e.newIndex
+                        index = e.newIndex
 
-                    console.log('ocid:' + oldContainerId)
-                    console.log('ncid:' + newContainerId)
-                    console.log('oi:' + oldIndex)
-                    console.log('ni:' + newIndex)
-                    console.log('id:' + id)
+                    move({id, index, parent, oldParent, oldIndex})
+                        .then(res => console.info(res))
+                        .catch(err => {
+                            console.info(err)
+
+                            
+
+                        })
                 },
             })
         })
@@ -70,6 +74,7 @@ const AppTreeList = defineComponent({
             ul,
             sortable,
             tree,
+            move,
         }
 
     },
