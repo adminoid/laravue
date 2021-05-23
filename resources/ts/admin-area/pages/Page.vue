@@ -3,7 +3,6 @@ main
     .page(v-if="id && page")
         h1 {{ page.title }}
         component(v-if="componentName" :is="componentName" :page="page")
-    h2(v-else) Загрузка...
 </template>
 
 <script lang="ts">

@@ -1,7 +1,6 @@
 <template lang="pug">
-.tree
-    ul(ref='ul')
-        app-tree-list-item(v-for="page in list" :page="page")
+ul(ref='ul')
+    app-tree-list-item(v-for="page in list" :page="page" v-if="open")
 </template>
 
 <script lang="ts">
@@ -24,6 +23,10 @@ const AppTreeList = defineComponent({
 
     props: {
         list: Array,
+        open: {
+            type: Boolean,
+            default: true,
+        },
     },
 
     setup() {
@@ -55,15 +58,7 @@ export default AppTreeList
 </script>
 
 <style lang="sass" scoped>
-.tree
-    ul
-        padding-left: 0.7rem
-        > li
-            padding: 0.3rem 0 0
-            list-style-type: none
-            a, span
-                margin-right: .3rem
-            span.move
-                cursor: move
-
+ul
+    min-height: 3px
+    padding-left: 0.7rem
 </style>

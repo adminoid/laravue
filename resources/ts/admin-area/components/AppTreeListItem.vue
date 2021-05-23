@@ -10,7 +10,7 @@ li
     a.add(href='' @click.prevent="add")
         img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
 
-    app-tree-list(v-if="open" :list="page.children")
+    app-tree-list(:list="page.children" :open="open")
 </template>
 
 <script lang="ts">
@@ -78,15 +78,12 @@ export default AppTreeListItem
 </script>
 
 <style lang="sass" scoped>
-.tree
-    ul
-        padding-left: 0.7rem
-        > li
-            padding: 0.3rem 0 0
-            list-style-type: none
-            a, span
-                margin-right: .3rem
-            span.move
-                cursor: move
+li
+    padding: 0.3rem 0 0
+    list-style-type: none
+    a, span
+        margin-right: .3rem
+    span.move
+        cursor: move
 
 </style>
