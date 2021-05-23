@@ -1,8 +1,8 @@
 <template lang="pug">
 
+textarea-simple(:value="page.pageable.spacial_text" :name="'special_text'")
 input-text(:value="page.name" :name="'name'")
 input-text(:value="page.title" :name="'title'")
-textarea-simple(:value="page.pageable.spacial_text" :name="'special_text'")
 
 </template>
 

@@ -3,13 +3,17 @@
     label.form-label(:for="name + '-field'") {{ name }}
     textarea.form-control(
         ref='editor'
-        rows="7"
+        rows="5"
        :id="name + '-field'"
     ) {{ value }}
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref} from 'vue'
+import {
+    defineComponent,
+    // onMounted,
+    ref
+} from 'vue'
 
 const TextareaEditor = defineComponent({
 
@@ -20,9 +24,9 @@ const TextareaEditor = defineComponent({
 
     setup() {
         const editor = ref()
-        onMounted(() => {
-            console.log(editor.value)
-        })
+        // onMounted(() => {
+        //     console.log(editor.value)
+        // })
 
         return {
             editor,

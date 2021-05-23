@@ -56,11 +56,15 @@ const AppTreeListItem = defineComponent({
             confirm('Добавить?')
         }
 
+        // const hasChildren = computed(() => {
+        //     return (props.page.hasOwnProperty('children') && !!props.page.children.length)
+        // })
+
         const icon = computed(() => {
             if (props.page.folder) {
                 return (open.value) ? 'minus' : 'plus'
             }
-            return 'empty'
+            // if (!hasChildren.value) return 'empty'
         })
 
         return {
@@ -69,6 +73,7 @@ const AppTreeListItem = defineComponent({
             add,
             icon,
             open,
+            // hasChildren,
         }
 
     },

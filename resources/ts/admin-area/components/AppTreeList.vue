@@ -35,9 +35,8 @@ const AppTreeList = defineComponent({
         onMounted(() => {
             sortable = new Sortable(ul.value as HTMLElement, {
                 group: 'tree',
-                animation: 150,
+                animation: 100,
                 fallbackOnBody: true,
-                swapThreshold: 0.65,
                 handle: '.move',
             })
         })
@@ -59,6 +58,6 @@ export default AppTreeList
 
 <style lang="sass" scoped>
 ul
-    min-height: 3px
     padding-left: 0.7rem
+    //min-height: 3px
 </style>
