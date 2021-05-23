@@ -10,7 +10,9 @@ import {
     reactive,
     ref,
     onMounted,
-    onUnmounted, computed,
+    onUnmounted,
+    computed,
+    toRef,
 } from 'vue'
 import Sortable from 'sortablejs'
 import {useStore} from "vuex";
@@ -30,13 +32,12 @@ const AppTreeList = defineComponent({
         },
     },
 
-    setup() {
+    setup(props) {
         const ul = ref()
         let sortable = reactive({})
 
         const store = useStore()
         const tree = computed(() => store.state.tree['tree'])
-
         onMounted(() => {
             sortable = new Sortable(ul.value as HTMLElement, {
                 group: 'tree',
@@ -44,15 +45,19 @@ const AppTreeList = defineComponent({
                 fallbackOnBody: true,
                 handle: '.move',
                 onEnd: function (e) {
+                    const items = ref(props.list).value,
+                        oldContainerId = e.from.getAttribute('data-parent'),
+                        newContainerId = e.to.getAttribute('data-parent'),
+                        //@ts-ignore
+                        id = items[e.oldIndex].id,
+                        oldIndex = e.oldIndex,
+                        newIndex = e.newIndex
 
-                    console.info(
-                        e.from.getAttribute('data-parent'),
-                        e.to.getAttribute('data-parent')
-                    )
-                    console.info(e.oldIndex, e.newIndex)
-
-                    console.log(tree.value)
-
+                    console.log('ocid:' + oldContainerId)
+                    console.log('ncid:' + newContainerId)
+                    console.log('oi:' + oldIndex)
+                    console.log('ni:' + newIndex)
+                    console.log('id:' + id)
                 },
             })
         })

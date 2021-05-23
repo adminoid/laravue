@@ -17,6 +17,45 @@ class PageController extends Controller
     /**
      * Custom methods
      */
+    public function move(Request $request)
+    {
+        //        abort(403, 'Unauthorized action. yoyo');
+        $id = $request->get('id');
+        $index = $request->get('index');
+        $parent = $request->get('parent');
+
+        $node = Page::find($id);
+
+        if ($index != intval($index)) {
+            if ($parent == 'root') {
+                $node->saveAsRoot();
+            }
+            else {
+                $parent = Page::find($parent);
+                $parent->appendNode($node);
+            }
+        }
+        else {
+            if ($parent == 'root') {
+                $neighbors = Page::whereNull('parent_id')->orderBy('_lft')->get();
+            }
+            else {
+                $neighbors = Page::find($parent)->sortChildren()->get();
+            }
+
+            // if newPosition is 0 - get first children and insert before them
+            if ($index == 0) {
+                $firstChildren = $neighbors[0];
+                $node->beforeNode($firstChildren)->save();
+            }
+            // else - insert afterNode
+            else {
+                $neighbor = $neighbors[$index-1];
+                $node->afterNode($neighbor)->save();
+            }
+        }
+        return response(['msg' => __('admin-panel.page_moved')]);
+    }
 //    public function getList($id)
 //    {
 //        dd($id);

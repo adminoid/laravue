@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Route::get('children/{id?}', 'PageController@getList')->where('id', '[0-9]+');
+Route::post('pages/move', 'PageController@move');
 Route::resource('pages', PageController::class);

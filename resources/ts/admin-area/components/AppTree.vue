@@ -1,5 +1,6 @@
 <template lang="pug">
 .tree-wrapper
+    pre {{ tree }}
     app-tree-list(
         :list="tree"
         data-parent="root"
