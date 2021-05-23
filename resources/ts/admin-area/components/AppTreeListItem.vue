@@ -4,13 +4,16 @@ li
         img(:src="`/img/admin-area/icons/${icon}.svg`" alt='Свернуть')
     span.move
         img(src='/img/admin-area/icons/move.svg' alt='Переместить')
-    router-link.link(:to="'/' + page.id") {{ page.name || page.title }}
+    router-link.link(:to="'/' + page.id") {{ page.id }}){{ page.name || page.title }}
     a.del(href='' @click.prevent="del")
         img(src='/img/admin-area/icons/del.svg' alt='Удалить')
     a.add(href='' @click.prevent="add")
         img(src='/img/admin-area/icons/add.svg' alt='Добавить дочернюю')
-
-    app-tree-list(:list="page.children" :open="open")
+    app-tree-list(
+        :list="page.children"
+        :open="open"
+        :data-parent="page.id"
+    )
 </template>
 
 <script lang="ts">
@@ -56,15 +59,11 @@ const AppTreeListItem = defineComponent({
             confirm('Добавить?')
         }
 
-        // const hasChildren = computed(() => {
-        //     return (props.page.hasOwnProperty('children') && !!props.page.children.length)
-        // })
-
         const icon = computed(() => {
             if (props.page.folder) {
                 return (open.value) ? 'minus' : 'plus'
             }
-            // if (!hasChildren.value) return 'empty'
+            return 'empty'
         })
 
         return {
@@ -73,7 +72,6 @@ const AppTreeListItem = defineComponent({
             add,
             icon,
             open,
-            // hasChildren,
         }
 
     },

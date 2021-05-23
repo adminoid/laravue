@@ -10,9 +10,10 @@ import {
     reactive,
     ref,
     onMounted,
-    onUnmounted,
+    onUnmounted, computed,
 } from 'vue'
 import Sortable from 'sortablejs'
+import {useStore} from "vuex";
 
 const AppTreeList = defineComponent({
     name: 'AppTreeList',
@@ -32,12 +33,27 @@ const AppTreeList = defineComponent({
     setup() {
         const ul = ref()
         let sortable = reactive({})
+
+        const store = useStore()
+        const tree = computed(() => store.state.tree['tree'])
+
         onMounted(() => {
             sortable = new Sortable(ul.value as HTMLElement, {
                 group: 'tree',
                 animation: 100,
                 fallbackOnBody: true,
                 handle: '.move',
+                onEnd: function (e) {
+
+                    console.info(
+                        e.from.getAttribute('data-parent'),
+                        e.to.getAttribute('data-parent')
+                    )
+                    console.info(e.oldIndex, e.newIndex)
+
+                    console.log(tree.value)
+
+                },
             })
         })
 
@@ -48,6 +64,7 @@ const AppTreeList = defineComponent({
         return {
             ul,
             sortable,
+            tree,
         }
 
     },
@@ -59,5 +76,5 @@ export default AppTreeList
 <style lang="sass" scoped>
 ul
     padding-left: 0.7rem
-    //min-height: 3px
+    min-height: 3px
 </style>

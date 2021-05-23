@@ -2,6 +2,7 @@
 .tree-wrapper
     app-tree-list(
         :list="tree"
+        data-parent="root"
     )
 </template>
 
