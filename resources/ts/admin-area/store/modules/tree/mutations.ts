@@ -18,11 +18,14 @@ export default {
         const {oldParent, oldIndex, parent, index} = payload
         // remove oldIndex, oldParent and get item returned
         applyToListByParent(state.tree, oldParent, (list: []) => {
-            let movedItem = list.splice(oldIndex, 1)
+            let movedItem = list.splice(oldIndex, 1)[0]
             // insert item to parent, index,
             applyToListByParent(state.tree, parent, (list: []) => {
+                let parentId = (parent == 'root') ? null : Number(parent)
                 //@ts-ignore
-                list.splice(index, 0, movedItem[0])
+                movedItem.parent_id = parentId
+                //@ts-ignore
+                list.splice(index, 0, movedItem)
                 state.enabled = false
             })
         })
