@@ -12,7 +12,7 @@ export const applyToListByParent = (
         ) {
             return callback(item.children)
         } else if (item.hasOwnProperty('children')) {
-            return applyToListByParent(item.children, parent, callback)
+            applyToListByParent(item.children, parent, callback)
         }
     }
 }

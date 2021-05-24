@@ -1,10 +1,7 @@
-import {applyToListByParent} from './helpers'
+import {applyToListByParent} from "./helpers"
 
 export default {
     setTree(state: any, data: {}) {
-
-        console.log(data)
-
         state.tree = data
     },
 
@@ -19,20 +16,15 @@ export default {
         index: number,
     }) {
         const {oldParent, oldIndex, parent, index} = payload
-        console.log(payload)
-
         // remove oldIndex, oldParent and get item returned
-        let movedItem = applyToListByParent(state.tree, oldParent, (list: []) => {
-            return list.splice(oldIndex, 1)
+        applyToListByParent(state.tree, oldParent, (list: []) => {
+            let movedItem = list.splice(oldIndex, 1)
+            // insert item to parent, index,
+            applyToListByParent(state.tree, parent, (list: []) => {
+                //@ts-ignore
+                list.splice(index, 0, movedItem[0])
+                state.enabled = false
+            })
         })
-
-        // insert item to parent, index,
-        applyToListByParent(state.tree, parent, (list: []) => {
-            console.log(parent)
-            console.log(list)
-            //@ts-ignore
-            list.splice(index, 0, {...movedItem[0]})
-        })
-
     },
 }

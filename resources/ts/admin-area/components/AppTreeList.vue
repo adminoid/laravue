@@ -11,10 +11,9 @@ import {
     ref,
     onMounted,
     onUnmounted,
-} from 'vue'
-import Sortable from 'sortablejs'
-import {useStore} from "vuex";
-import _ from 'lodash'
+} from "vue"
+import Sortable from "sortablejs"
+import {useStore} from "vuex"
 
 const AppTreeList = defineComponent({
     name: 'AppTreeList',
@@ -38,7 +37,6 @@ const AppTreeList = defineComponent({
             store = useStore(),
             move = (payload: {}) => store.dispatch('tree/move', payload),
             moveItem = (payload: {}) => store.commit('tree/moveItem', payload),
-            // setTree = (payload: {}) => store.commit('tree/setTree', payload),
             setEnabled = (value: boolean) => store.commit('tree/setEnabled', value)
 
         onMounted(() => {
@@ -56,30 +54,13 @@ const AppTreeList = defineComponent({
                         oldIndex = e.oldIndex,
                         index = e.newIndex
 
-                    const backup = _.cloneDeep(store.state.tree.tree)
                     move({id, index, parent})
-                        .then(res => {
-                            console.warn(res)
-                            // moveItem({oldParent, oldIndex, parent, index})
+                        .then(_ => {
+                            // todo: set actual parent_id
+                            moveItem({oldParent, oldIndex, parent, index})
                         })
-                        .catch(e => {
-
-                            // [backup[0], backup[1]] = [backup[1], backup[0]]
-
-                            // setTree(backup)
+                        .catch(_ => {
                             setEnabled(false)
-
-                            console.log(e.message)
-                            // restore tree
-                            // moveItem({
-                            //     oldParent: parent,
-                            //     oldIndex: index,
-                            //     parent: oldParent,
-                            //     index: oldIndex,
-                            // })
-
-
-
                         })
                 },
             })
@@ -94,7 +75,6 @@ const AppTreeList = defineComponent({
             sortable,
             move,
             moveItem,
-            // setTree,
             setEnabled,
         }
 

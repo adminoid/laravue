@@ -7,7 +7,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, computed, watchEffect, nextTick} from 'vue'
+import {
+    defineComponent,
+    onMounted,
+    computed,
+    watch,
+    nextTick
+} from 'vue'
 import AppTreeList from "./AppTreeList.vue"
 import {useStore} from "vuex";
 
@@ -20,8 +26,8 @@ const AppTree = defineComponent({
         const enabled = computed(() => store.state.tree['enabled']),
             setEnabled = (value: boolean) => store.commit('tree/setEnabled', value)
 
-        watchEffect(() => {
-            console.log(enabled.value)
+        watch(enabled, () => {
+            // console.info(enabled.value)
             nextTick(() => {
                 setEnabled(true)
             })

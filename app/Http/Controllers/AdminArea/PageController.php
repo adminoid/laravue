@@ -19,7 +19,8 @@ class PageController extends Controller
      */
     public function move(Request $request)
     {
-        abort(403, 'test error');
+//        abort(403, 'test error');
+        return response(['msg' => 'success']);
 
         $id = $request->get('id');
         $index = $request->get('index');

@@ -48,7 +48,7 @@ const AppTreeListItem = defineComponent({
 
     setup(props: any) {
 
-        let open = ref(false)
+        let open = ref(true)
         const toggle = () => {
             open.value = !open.value
         }
