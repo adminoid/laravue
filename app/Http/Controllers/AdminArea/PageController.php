@@ -27,14 +27,24 @@ class PageController extends Controller
         $index = $request->get('index');
         $parent = $request->get('parent');
 
+        $page = Page::find($id);
+
         if ($parent == 'root') {
             $neighbors = Page::whereIsRoot()->orderBy('_lft')->get();
+            if ($neighbors) {
+                $page->insertBeforeNode($neighbors[$index]);
+            } else {
+                $page->saveAsRoot();
+            }
         } else {
-            $neighbors = Page::find($parent)->children()->orderBy('_lft')->get();
+            $parentPage = Page::find($parent);
+            $neighbors = $parentPage->children()->orderBy('_lft')->get();
+            if ($neighbors->count() > 0) {
+                $page->insertBeforeNode($neighbors[$index]);
+            } else {
+                $parentPage->appendNode($page);
+            }
         }
-
-        $page = Page::find($id);
-        $page->beforeNode($neighbors[$index])->save();
 
         return response(['msg' => 'success']);
     }
