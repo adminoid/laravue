@@ -2,6 +2,7 @@
 
 input-text(:value="page.name" :name="'name'")
 input-text(:value="page.title" :name="'title'")
+input-text(:value="page.slug" :name="'slug'")
 textarea-editor(:value="page.pageable.standard_text" :name="'standard_text'")
 
 </template>

@@ -1,8 +1,9 @@
 export interface IPage {
     name: string,
     title: string,
+    slug: string,
     page_type: {
-        model: string
+        model: string,
     }
     pageable: {
         spacial_text: string
