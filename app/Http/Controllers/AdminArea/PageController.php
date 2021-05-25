@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminArea;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -20,42 +21,21 @@ class PageController extends Controller
     public function move(Request $request)
     {
 //        abort(403, 'test error');
-        return response(['msg' => 'success']);
+//        return response(['msg' => 'success']);
 
         $id = $request->get('id');
         $index = $request->get('index');
         $parent = $request->get('parent');
 
-        $node = Page::find($id);
-
-        if ($index != intval($index)) {
-            if ($parent == 'root') {
-                $node->saveAsRoot();
-            }
-            else {
-                $parent = Page::find($parent);
-                $parent->appendNode($node);
-            }
+        if ($parent == 'root') {
+            $neighbors = Page::whereIsRoot()->orderBy('_lft')->get();
+        } else {
+            $neighbors = Page::find($parent)->children()->orderBy('_lft')->get();
         }
-        else {
-            if ($parent == 'root') {
-                $neighbors = Page::whereNull('parent_id')->orderBy('_lft')->get();
-            }
-            else {
-                $neighbors = Page::find($parent)->sortChildren()->get();
-            }
 
-            // if newPosition is 0 - get first children and insert before them
-            if ($index == 0) {
-                $firstChildren = $neighbors[0];
-                $node->beforeNode($firstChildren)->save();
-            }
-            // else - insert afterNode
-            else {
-                $neighbor = $neighbors[$index-1];
-                $node->afterNode($neighbor)->save();
-            }
-        }
+        $page = Page::find($id);
+        $page->beforeNode($neighbors[$index])->save();
+
         return response(['msg' => 'success']);
     }
 
@@ -68,17 +48,14 @@ class PageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
         // need to add special fields: id, _lft, parent_id
         return response()->json(
-            Page::get(['id', '_lft', 'parent_id', 'title'])
-//                ->map(function ($page) {
-//                    $page['folder'] = $page->children()->exists();
-//                    return $page;
-//                })
+            Page::defaultOrder()
+                ->get(['id', '_lft', 'parent_id', 'title'])
                 ->toTree()
                 ->toArray()
         );
@@ -109,7 +86,7 @@ class PageController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Page  $page
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show(Page $page)
     {

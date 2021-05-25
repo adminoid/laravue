@@ -33,5 +33,4 @@ class Page extends Model
             $this->appendToNode($node)->save();
         }
     }
-
 }
