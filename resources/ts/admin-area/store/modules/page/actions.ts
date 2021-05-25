@@ -4,4 +4,10 @@ export default {
         const response = await axios.get('/api/pages/' + id)
         commit('setPage', {id, data: response.data})
     },
+
+    // async delete({commit}: {commit: Function}, id: string) {
+    //     axios.delete('/api/pages/' + id).then(resp => {
+    //
+    //     })
+    // }
 }
