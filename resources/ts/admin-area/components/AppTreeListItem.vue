@@ -31,7 +31,6 @@ interface IItem {
     parent_id: number | null
     name?: string
     title: string
-    folder: boolean
     children: object[]
 }
 
@@ -59,9 +58,14 @@ const AppTreeListItem = defineComponent({
             confirm('Добавить?')
         }
 
+        // todo: open/closed/empty icons for moved items
+        const hasChildren = computed(() => {
+            return props.page.children.length > 0
+        })
+
         const icon = computed(() => {
-            if (props.page.folder) {
-                return (open.value) ? 'minus' : 'plus'
+            if (hasChildren.value) {
+                return open.value ? 'minus' : 'plus'
             }
             return 'empty'
         })
@@ -72,6 +76,7 @@ const AppTreeListItem = defineComponent({
             add,
             icon,
             open,
+            hasChildren
         }
 
     },

@@ -56,7 +56,6 @@ const AppTreeList = defineComponent({
 
                     move({id, index, parent})
                         .then(_ => {
-                            // todo: set actual parent_id
                             moveItem({oldParent, oldIndex, parent, index})
                         })
                         .catch(_ => {
