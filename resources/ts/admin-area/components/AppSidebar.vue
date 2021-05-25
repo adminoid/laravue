@@ -1,6 +1,7 @@
 <template lang="pug">
-.sidebar.col-3.col-sm-5
-    app-tree
+.col-xxl-3.col-xl-3.col-lg-4.col-md-5.col-sm-6
+    .sidebar
+        app-tree
 </template>
 
 <script lang="ts">

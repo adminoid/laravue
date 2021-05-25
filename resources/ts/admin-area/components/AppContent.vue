@@ -1,7 +1,6 @@
 <template lang="pug">
 div(:class="containerClass")
     .container-fluid.content-container
-        pre {{ tree }}
         router-view
 </template>
 
@@ -16,7 +15,7 @@ const AppContent = defineComponent({
         const containerClass = computed(
             _ =>
                 (store.state.layout.sidebarOpen) ?
-                    'col-8 col-sm-7' : 'col-12'
+                    'col-xxl-9 col-xl-9 col-lg-8 col-md-7 col-sm-6' : 'col-12'
         )
 
         return {
